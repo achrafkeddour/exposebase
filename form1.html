@@ -6,10 +6,10 @@
   <title>Node.js Form</title>
   <style>
   body {
-    color: #fff; font-weight: bolder;
+    color: #fff; 
   }
 #container {
-    width:600px; height: fit-content;
+    width:600px;     height: fit-content;
     background-color: #0866ff;    border-radius: 8px; 
     margin: 160px auto;     padding: 40px 40px 30px 40px;
     font-family:Arial, Helvetica, sans-serif;
@@ -18,11 +18,16 @@ form {
     font-size: 20px;
 }
 h3 {
-    display:block; padding: 0px; margin: -13px 0 20px 0;
+    display:block; 
+    padding: 0px; 
+    margin: -13px 0 20px 0;
 }
-input[type="text"] {
-    padding: 5px 15px; border-radius: 8px;
-    font-weight: bolder; font-size: 14px;
+label {
+    font-weight: bold;
+}
+input[type="text"], input[type="password"] {
+    padding: 5px 15px;       border-radius: 8px;
+    font-weight: bolder;     font-size: 14px;
     border: 2px solid #555456;   
 }
 input[type="submit"] {
@@ -38,10 +43,14 @@ input[type="submit"] {
     <form method="POST">
       <h3>ENPO - GS (expose sur le nodejs)</h3>
       <label for="name">Écrivez votre Nom :</label>
-      <input type="text" id="name" name="name" required><br><br>
+      <input type="text" id="name" name="name" placeholder="Nom de la famille" required><br><br>
 
       <label for="speciality">Écrivez votre Spécialité :</label>
-      <input type="text" id="speciality" name="speciality" required><br><br>
+      <input type="text" id="speciality" name="speciality" placeholder="RT / IMSI" required><br><br>
+      
+      
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" name="password" required><br><br>
 
       <input type="submit"  value="Login" >
     </form>
