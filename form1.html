@@ -4,20 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Node.js Form</title>
+  <style>
+  body {
+    color: #fff; font-weight: bolder;
+  }
+#container {
+    width:600px; height: fit-content;
+    background-color: #0866ff;    border-radius: 8px; 
+    margin: 160px auto;     padding: 40px 40px 30px 40px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+form { 
+    font-size: 20px;
+}
+h3 {
+    display:block; padding: 0px; margin: -13px 0 20px 0;
+}
+input[type="text"] {
+    padding: 5px 15px; border-radius: 8px;
+    font-weight: bolder; font-size: 14px;
+    border: 2px solid #555456;   
+}
+input[type="submit"] {
+    background-color: #00ff10;  border: 2px solid #555456;
+    padding: 9px 15px;      border-radius: 11px;
+    font-weight: bolder;    font-size: 14px;
+    cursor: pointer;
+}
+</style>
 </head>
-<body style="color: #fff;font-weight: bolder;">
+<body>
+  <div id="container"> 
+    <form method="POST">
+      <h3>ENPO - GS (expose sur le nodejs)</h3>
+      <label for="name">Écrivez votre Nom :</label>
+      <input type="text" id="name" name="name" required><br><br>
 
-  <div style="width:700px;height: fit-content;background-color: #0866ff;margin: 200px auto;padding: 40px 40px 30px 40px;border-radius: 8px;">      <form method="POST">
-        <h3 style="display:block;padding: 0px;margin: -13px 0 20px 0;">ENPO - GS (expose sur le nodejs)</h3>
-        <label for="name">Écrivez votre Nom :</label>
-        <input type="text" id="name" name="name" required><br><br>
+      <label for="speciality">Écrivez votre Spécialité :</label>
+      <input type="text" id="speciality" name="speciality" required><br><br>
 
-        <label for="speciality">Écrivez votre Spécialité :</label>
-        <input type="text" id="speciality" name="speciality" required><br><br>
-
-        <input type="submit"  value="Login" color="#000" style="background-color: #00ff10;padding: 9px 15px;font-weight: bolder;border-radius: 11px;font-size: 14px;border: 2px solid #555456;cursor: pointer;">
-      </form>
-    </div>
+      <input type="submit"  value="Login" >
+    </form>
+  </div>
   
 </body>
 </html>
