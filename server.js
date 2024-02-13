@@ -9,7 +9,7 @@ const fs = require('fs');
 
 // Lecture du fichier HTML du formulaire
 const formHTML = fs.readFileSync('form1.html', 'utf8');
-
+const expectedPassword = 'dhcp';
 // Création du serveur HTTP
 const server = http.createServer((req, res) => {
   if (req.method === 'GET') {
@@ -23,13 +23,16 @@ const server = http.createServer((req, res) => {
       body += chunk;
     });
 
-
     req.on('end', () => {
-      // Répondre avec les données reçues ainsi que le formulaire
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      if (body.trim() !== '') {
-        // Si des données sont présentes dans le corps de la requête, les afficher dans la div
-        const formData = parseFormData(body);
+      // Analyser les données du formulaire
+      const formData = parseFormData(body);
+      
+      // Récupérer le mot de passe soumis
+      const submittedPassword = formData.password;
+
+      // Vérifier si le mot de passe soumis est correct
+      if (submittedPassword === expectedPassword) {
+        // Si le mot de passe est correct, afficher les données
         let specialMessage = null; // Define a variable for special message and initialize it as null
         let fullname, datenais, moys1, gender, prepa, fb ; // Define variables for additional data
         
@@ -79,7 +82,7 @@ const server = http.createServer((req, res) => {
                 fullname = 'Kaddour Brahim Meroua';datenais = '09/11/2003';moys1 = 13.32; gender = 'Female'; prepa = 'ESGEE'; fb = 'Marwa Kaddour';
                 break;
           case 'mahdjoub':
-                fullname = 'Mahdjoub Alaa';datenais = '20/12/2003';moys1 = 12.79; gender = 'Female'; prepa = 'ESSAT'; fb = 'Alaa Mb';
+                fullname = 'Mahdjoub Alaa';datenais = '20/12/2003';moys1 = 12.79; gender = 'Female'; prepa = 'ESSAT'; fb = 'Marwa Kaddour';
                 break;
           case 'miliani':
                 fullname = 'Miliani Aya';datenais = '01/12/2003';moys1 = 12.69; gender = 'Female'; prepa = 'ENPO'; fb = 'Aya Mln';
@@ -116,6 +119,7 @@ const server = http.createServer((req, res) => {
         }
     
         // Construction de la réponse complète en utilisant le formulaire HTML et les données supplémentaires HTML
+        res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(`
           ${formHTML.replace('</div>', `
             <p>Votre Nom de famille est : ${formData.name}</p>
@@ -123,11 +127,14 @@ const server = http.createServer((req, res) => {
             ${additionalDataHTML}</div>`)}
         `);
       } else {
-        // Si le corps de la requête est vide, afficher uniquement le formulaire
-        res.end(formHTML);
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(`
+          ${formHTML.replace('</div>', `
+            <p style="color: red;">Mot de passe incorrect</p>
+          </div>`)}
+        `);
       }
     });
-    
   }
 });
 
@@ -144,12 +151,11 @@ function parseFormData(formData) {
 // Port sur lequel le serveur écoutera
 const port = 10000; // Utilisation du port 10000
 server.listen(port, '0.0.0.0', () => { // Binding to 0.0.0.0
-console.log(`Server running at http://0.0.0.0:${port}/`);
+  console.log(`Server running at http://0.0.0.0:${port}/`);
 });
-
 
 // Port sur lequel le serveur écoutera (localhost)
 // const port = 3000;
 // server.listen(port, () => {
-// console.log(`Server running at http://localhost:${port}/`);
+//   console.log(`Server running at http://localhost:${port}/`);
 // });
