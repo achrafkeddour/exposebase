@@ -79,7 +79,7 @@ const server = http.createServer((req, res) => {
                 fullname = 'Kaddour Brahim Meroua';datenais = '09/11/2003';moys1 = 13.32; gender = 'Female'; prepa = 'ESGEE'; fb = 'Marwa Kaddour';
                 break;
           case 'mahdjoub':
-                fullname = 'Mahdjoub Alaa';datenais = '20/12/2003';moys1 = 12.79; gender = 'Female'; prepa = 'ESSAT'; fb = 'Marwa Kaddour';
+                fullname = 'Mahdjoub Alaa';datenais = '20/12/2003';moys1 = 12.79; gender = 'Female'; prepa = 'ESSAT'; fb = 'Alaa Mb';
                 break;
           case 'miliani':
                 fullname = 'Miliani Aya';datenais = '01/12/2003';moys1 = 12.69; gender = 'Female'; prepa = 'ENPO'; fb = 'Aya Mln';
