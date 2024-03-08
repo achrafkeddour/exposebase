@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const formHTML = fs.readFileSync('form1.html', 'utf8'); //UTF-8 prend en charge diverses langues.
-const expectedPassword = 'dhcp';
+const expectedPassword = 'enpogs';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
