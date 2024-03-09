@@ -64,7 +64,7 @@ app.post('/', (req, res) => {
           additionalDataHTML += `<p>Nom complet: ${fullname}</p>`;
           additionalDataHTML += `<p>Date de naissance: ${datenais}</p>`;
           additionalDataHTML += `<p>Moyenne 1 : ${moys1}</p>`; additionalDataHTML += `<p>Genre: ${gender}</p>`;
-          additionalDataHTML += `<p>Prepa: ${prepa}</p>`; additionalDataHTML += `<p>Facebook: ${fb}</p>`;
+          additionalDataHTML += `<p>Prepa: ${prepa}</p>`; 
           additionalDataHTML += `<p>Habite: ${lives}</p>`;
         }
 
